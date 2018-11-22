@@ -3,8 +3,9 @@
   "description": "Selenium Webdriver... in a vagrant box!",
   "version": "1.0.0",
   "dependencies": {
-  	"selenium-webdriver": "^3.6",
-  	"chromedriver": "^2.43",
-  	"geckodriver": "^1.14"
+    "chromedriver": "^2.43",
+    "geckodriver": "^1.14",
+    "jasmine": "^3.3",
+    "selenium-webdriver": "^3.6"
   }
 }
