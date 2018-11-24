@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "vagrantProvision.sh"
 
-  config.vm.synced_folder "./tests", "/home/vagrant/Website/tests", owner: "vagrant", group: "vagrant"
+  config.vm.synced_folder "./Website", "/home/vagrant/Website", owner: "vagrant", group: "vagrant"
 
   $script = <<-SCRIPT
 	# # Install NodeJS
