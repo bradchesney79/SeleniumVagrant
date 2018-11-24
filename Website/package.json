@@ -9,6 +9,6 @@
     "selenium-webdriver": "^3.6"
   },
   "scripts": {
-  	"test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   }
 }

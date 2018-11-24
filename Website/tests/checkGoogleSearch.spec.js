@@ -19,7 +19,7 @@ describe('Google search results show for automated testing', function() {
     // });
 
     it('True is true', function() {
-        console.log('Testing: ' + browser.getTitle());
+        console.log('Testing: basic test');
         expect(true).toBe(true);
     });
 
