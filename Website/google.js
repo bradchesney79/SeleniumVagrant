@@ -23,17 +23,10 @@ function handleFailure(err) {
 	closeBrowser();
 }
 
-function findTutsPlusLink() {
-	return browser.findElements(webdriver.By.css('[href="http://code.tutsplus.com/"]')).then(function(result) {
-		return result[0];
-	});
-}
-
 function closeBrowser() {
 	browser.quit();
 }
 
 browser.get('https://www.google.com');
-browser.findElement(webdriver.By.name('q')).sendKeys('tuts+ code');
+browser.findElement(webdriver.By.name('q')).sendKeys('automated testing');
 browser.findElement(webdriver.By.name('btnG')).click();
-browser.wait(findTutsPlusLink, 2000).then(clickLink).then(logTitle).then(closeBrowser, handleFailure);

@@ -1,3 +1,4 @@
+.vagrant/
 node_modules/
 package-lock.json
 ubuntu-bionic-18.04-cloudimg-console.log

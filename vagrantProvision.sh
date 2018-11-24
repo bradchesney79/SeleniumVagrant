@@ -14,11 +14,6 @@ apt-get update
 
 apt-get -y upgrade
 
-# Autologin vagrant user
-
-sed -i '$ d' /etc/init/tty1.conf
-echo "exec /sbin/rungetty --autologin vagrant tty1" >> /etc/init/tty1.conf
-
 # Enable SSH login
 
 sed -i '/^PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
@@ -33,49 +28,22 @@ ln -s /usr/bin/xterm /etc/alternatives/x-terminal-emulator
 
 apt-get -y install xorg openbox obmenu
 
+rm /usr/bin/python
+
 ln -s /usr/bin/python2.7 /usr/bin/python
+
+mkdir -p /home/vagrant/.config/openbox
 
 echo "LANG=en_US.UTF8" > /home/vagrant/.config/openbox/environment
 
-cp /etc/xdg/openbox/menu.xml /home/vagrant/.config/rc.xml
+cp /etc/xdg/openbox/menu.xml /home/vagrant/.config/openbox/rc.xml
 
-cp /etc/xdg/openbox/menu.xml /home/vagrant/.config/menu.xml
+cp /etc/xdg/openbox/menu.xml /home/vagrant/.config/openbox/menu.xml
+
+chown -R vagrant:vagrant /home/vagrant/.config
 
 # Start the desktop environment with:
 # startx
-
-# Install NodeJS
-
-# install n
-
-# n is a nodeJS version manager tool similar to rvm and nvm
-# n allow you to install several versions of nodeJS side by side
-# if you need a specific version you may "use" that version of node
-
-# todo: check n script against expected hash
-
-curl -s -L https://git.io/n-install | bash -s -- -y
-
-# make n available to the shell
-
-. /root/.bashrc
-
-# The most recent lts version (v8.11.3 at this time) is installed with n
-
-#/root/n/bin/n -q 6.14.3 # install this version, set to default, & switch to it
-
-#/root/n/bin/n -d -q stable # just download the latest stable version (v10.8.0 at this time)
-
-# Install the latest stable node
-/root/n/bin/n -q stable
-
-# update the nodeJS software package manager
-
-# todo: check npm script against expected hash
-
-curl -s -0 -L https://npmjs.com/install.sh | bash > /dev/null
-
-npm install -g npm@latest
 
 # Install Chrome browser
 
@@ -88,12 +56,31 @@ apt-get -y install google-chrome-stable
 
 apt-get -y install firefox
 
+# Install NodeJS
 
+# install n
 
-cd /home/vagrant/tests
+# n is a nodeJS version manager tool similar to rvm and nvm
+# n allow you to install several versions of nodeJS side by side
+# if you need a specific version you may "use" that version of node
 
-# Install the latest selenium, chromedriver, and geckodriver npm packages
+# todo: check n script against expected hash
 
-npm install
+echo "Installing NodeJS"
 
-chown -R vagrant:vagrant /home/vagrant/tests
+curl -s -L https://git.io/n-install | bash -s -- -y
+
+# make n available to the shell
+
+. /root/.bashrc
+
+# Install the latest stable node
+/root/n/bin/n -q stable
+
+# update the nodeJS software package manager
+
+# ToDo: check npm script against expected hash
+
+npm install -g npm@latest karma
+
+chown -R vagrant:vagrant /home/vagrant/Website/tests
