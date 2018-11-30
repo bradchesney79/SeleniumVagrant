@@ -81,6 +81,6 @@ curl -s -L https://git.io/n-install | bash -s -- -y
 
 # ToDo: check npm script against expected hash
 
-npm install -g npm@latest karma
+npm install -g npm@latest
 
 chown -R vagrant:vagrant /home/vagrant/Website/tests

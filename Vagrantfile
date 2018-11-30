@@ -30,5 +30,4 @@ Vagrant.configure("2") do |config|
     trigger.info = "Changing video settings..."
     trigger.run = {path: "changeVideoSettings.sh"}
   end
-
 end
