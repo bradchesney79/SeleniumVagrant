@@ -15,11 +15,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "vagrantProvision.sh"
 
-  config.vm.synced_folder "./Website", "/home/vagrant/Website", owner: "vagrant", group: "vagrant"
+  config.vm.synced_folder ".", "/home/vagrant/", owner: "vagrant", group: "vagrant"
 
   $script = <<-SCRIPT
 
-    cd /home/vagrant/Website
+    cd /home/vagrant/
     npm install
 
   SCRIPT
